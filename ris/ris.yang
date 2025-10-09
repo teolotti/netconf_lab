@@ -1,0 +1,16 @@
+module ris {
+  namespace "urn:ris";
+  prefix ris;
+
+  container ris {
+    leaf ris-id { type uint16; }
+
+    list beam {
+      key "id";
+      leaf id { type uint8; }
+      leaf direction { type string; }
+      leaf enabled { type boolean; default false; }
+      leaf power { type uint8; default 50; }
+    }
+  }
+}

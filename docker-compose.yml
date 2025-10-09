@@ -1,0 +1,22 @@
+
+
+services:
+  ris-server:
+    build: ./ris
+    container_name: ris-sim
+    ports:
+      - "830:830"
+    networks:
+      - ris-net
+
+  netconf-controller:
+    build: ./controller
+    container_name: netconf-controller
+    depends_on:
+      - ris-server
+    networks:
+      - ris-net
+
+networks:
+  ris-net:
+    driver: bridge

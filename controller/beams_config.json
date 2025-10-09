@@ -1,0 +1,5 @@
+[
+  { "id": 1, "direction": "EAST", "enabled": true,  "power": 80 },
+  { "id": 2, "direction": "NORTH", "enabled": false, "power": 50 },
+  { "id": 3, "direction": "WEST", "enabled": true,  "power": 90 }
+]
