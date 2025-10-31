@@ -1,6 +1,7 @@
 from ncclient import manager
 import xml.etree.ElementTree as ET
 import json
+import time
 
 DEVICE = {
     "host": "ris-sim",
@@ -33,7 +34,7 @@ def build_config_xml(beams):
         beam_id.text = str(b["id"])
         
         direction = ET.SubElement(beam, "direction")
-        direction.text = b["direction"]
+        direction.text = str(b["direction"])
         
         enabled = ET.SubElement(beam, "enabled")
         enabled.text = str(b["enabled"]).lower()
@@ -46,11 +47,17 @@ def build_config_xml(beams):
 
 
 with manager.connect(**DEVICE) as m:
+    print("📡 Connessione al server NETCONF stabilita.\n")
+
+    start = time.time()
     xml_config = build_config_xml(beam_list)
 
     print("XML da inviare:")
     print(xml_config)
     print()
     
-    m.edit_config(target="running", config=xml_config)
+    reply = m.edit_config(target="running", config=xml_config)
+    end = time.time()
     print("✅ Configurazione aggiornata con successo.")
+    print(reply)
+    print(f"⏱ Tempo impiegato: {end - start:.2f} secondi.\n")
