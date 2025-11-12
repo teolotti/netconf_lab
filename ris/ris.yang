@@ -16,9 +16,19 @@ module ris {
 
   notification iot-device {
     description "Event generated when a new IoT device is detected.";
-    leaf ris-id { type uint16; }
-    leaf iot-id { type string; }
-    leaf rssi   { type int32; }
-    leaf aoa    { type decimal64 { fraction-digits 2; }}
+    leaf ris-id { 
+      type uint16; 
+    }
+    leaf iot-id { 
+      type string; 
+    }
+    leaf rssi { 
+      type int32; 
+    }
+    leaf aoa { 
+      type decimal64 { 
+        fraction-digits 2; 
+      }
+    }
   }
 }

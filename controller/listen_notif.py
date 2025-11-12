@@ -12,13 +12,14 @@ with manager.connect(
     username="root", 
     password="root", 
     hostkey_verify=False,
-    notification_handler=notif_handler
 ) as m:
     m.create_subscription()
-    
     print("[Controller] Listening for notifications... (Press Ctrl+C to stop)")
     try:
         while True:
-            pass
+            # Wait for a notification with a timeout (seconds)
+            notif = m.take_notification(timeout=0.5)
+            if notif:
+                notif_handler(notif)
     except KeyboardInterrupt:
         print("\n[Controller] Stopped listening for notifications.")
