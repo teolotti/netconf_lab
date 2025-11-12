@@ -8,4 +8,4 @@ netopeer2-server -d -v2 &
 sleep 5
 echo "[RIS] RIS NETCONF server is up and running on port 830."
 
-python3 /opt/notify.py
+#python3 /opt/notify.py
