@@ -8,9 +8,17 @@ module ris {
     list beam {
       key "id";
       leaf id { type uint8; }
-      leaf direction { type uint8; }
+      leaf direction { type string; }
       leaf enabled { type boolean; default false; }
       leaf power { type uint8; default 50; }
     }
+  }
+
+  notification iot-device {
+    description "Event generated when a new IoT device is detected.";
+    leaf ris-id { type uint16; }
+    leaf iot-id { type string; }
+    leaf rssi   { type int32; }
+    leaf aoa    { type decimal64 { fraction-digits 2; }}
   }
 }

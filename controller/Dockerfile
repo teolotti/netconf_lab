@@ -1,6 +1,8 @@
 FROM python:3.10-slim
-RUN pip install ncclient
 WORKDIR /app
-COPY edit.py get.py beams_config.json ./
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app/
 
 CMD ["tail", "-f", "/dev/null"] 

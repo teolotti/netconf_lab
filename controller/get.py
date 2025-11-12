@@ -2,7 +2,7 @@ from ncclient import manager
 import xml.dom.minidom
 
 DEVICE = {
-    "host": "ris-sim",
+    "host": "ris-netconf-server",
     "port": 830,
     "username": "root",
     "password": "root",

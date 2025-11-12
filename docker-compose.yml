@@ -1,22 +1,23 @@
 
-
 services:
   ris-server:
     build: ./ris
-    container_name: ris-sim
+    container_name: ris-netconf-server
     ports:
       - "830:830"
     networks:
-      - ris-net
+      - netconf-net
 
   netconf-controller:
     build: ./controller
-    container_name: netconf-controller
+    container_name: controller-netconf-client
     depends_on:
       - ris-server
     networks:
-      - ris-net
+      - netconf-net
+    tty: true
+    stdin_open: true
 
 networks:
-  ris-net:
+  netconf-net:
     driver: bridge
