@@ -2,25 +2,43 @@ module ris {
   namespace "urn:ris";
   prefix ris;
 
+  feature notifications {
+    description "Enable NETCONF notifications for this module";
+  }
+
   container ris {
-    leaf ris-id { type uint16; }
+    leaf ris-id { 
+      type uint16; 
+    }
 
     list beam {
       key "id";
-      leaf id { type uint8; }
-      leaf direction { type string; }
-      leaf enabled { type boolean; default false; }
-      leaf power { type uint8; default 50; }
+      leaf id { 
+        type uint8; 
+      }
+      leaf direction { 
+        type string; 
+      }
+      leaf enabled { 
+        type boolean; 
+        default false; 
+      }
+      leaf power { 
+        type uint8; 
+        default 50; 
+      }
     }
   }
 
+  // AGGIUNGI 'if-feature' alla notifica
   notification iot-device {
+    if-feature notifications;
     description "Event generated when a new IoT device is detected.";
     leaf ris-id { 
       type uint16; 
     }
     leaf iot-id { 
-      type string; 
+      type uint16; 
     }
     leaf rssi { 
       type int32; 
