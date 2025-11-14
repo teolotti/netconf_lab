@@ -1,6 +1,11 @@
 import time 
 import subprocess 
 import random 
+
+
+#FIXME: sysrepocfg notification not working
+
+
 print("[RIS] IoT notification simulator started.") 
 def build_notification(): 
     iot_id = random.randint(1, 100) 

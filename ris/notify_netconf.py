@@ -5,6 +5,10 @@ import tempfile
 import os
 from datetime import datetime
 
+
+#FIXME: netopeer2-cli notification not working
+
+
 def send_netconf_notification():
     iot_id = random.randint(1, 100)
     rssi = random.randint(-100, -30)
