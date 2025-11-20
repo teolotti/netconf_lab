@@ -58,7 +58,7 @@ fi
 
 # Avvia lo script di notifica
 echo "Starting notification simulator..."
-python3 /opt/ris/notify_sysrepo.py &
+python3 /opt/notify_sysrepo.py &
 NOTIFY_PID=$!
 echo "Notification simulator PID: $NOTIFY_PID"
 

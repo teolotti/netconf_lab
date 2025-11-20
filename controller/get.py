@@ -13,7 +13,7 @@ with manager.connect(**DEVICE) as m:
     print("📡 Connessione al server NETCONF stabilita.\n")
 
     # Richiede configurazione corrente
-    reply = m.get_config(source="running")
+    reply = m.get_config(source="running", filter=('subtree', '<ris xmlns="urn:ris"/>'))
 
     # Formatta XML per stampa leggibile
     xml_str = xml.dom.minidom.parseString(str(reply)).toprettyxml()
